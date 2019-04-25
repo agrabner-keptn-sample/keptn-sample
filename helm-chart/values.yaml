@@ -23,8 +23,8 @@ simplenodeserviceBlue:
         name: simplenodeservice
     image:
         pullPolicy: IfNotPresent
-        repository: null
-        tag: null
+        repository: index.docker.io/grabnerandi/simplenodeservice
+        tag: 1.0.0
     replicaCount: 1
     resources:
         limits:
@@ -43,8 +43,8 @@ simplenodeserviceGreen:
         name: simplenodeservice
     image:
         pullPolicy: IfNotPresent
-        repository: null
-        tag: null
+        repository: index.docker.io/grabnerandi/simplenodeservice
+        tag: 1.0.0
     replicaCount: 1
     resources:
         limits:
