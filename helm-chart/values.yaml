@@ -18,3 +18,43 @@ simplenodeservice:
         internalPort: 8080
         name: simplenodeservice
         type: LoadBalancer
+simplenodeserviceBlue:
+    container:
+        name: simplenodeservice
+    image:
+        pullPolicy: IfNotPresent
+        repository: null
+        tag: null
+    replicaCount: 1
+    resources:
+        limits:
+            cpu: 100m
+            memory: 128Mi
+        requests:
+            cpu: 100m
+            memory: 128Mi
+    service:
+        externalPort: 80
+        internalPort: 8080
+        name: simplenodeservice-blue
+        type: LoadBalancer
+simplenodeserviceGreen:
+    container:
+        name: simplenodeservice
+    image:
+        pullPolicy: IfNotPresent
+        repository: null
+        tag: null
+    replicaCount: 1
+    resources:
+        limits:
+            cpu: 100m
+            memory: 128Mi
+        requests:
+            cpu: 100m
+            memory: 128Mi
+    service:
+        externalPort: 80
+        internalPort: 8080
+        name: simplenodeservice-green
+        type: LoadBalancer
