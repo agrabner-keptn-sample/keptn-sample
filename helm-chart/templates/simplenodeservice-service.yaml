@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: simplenodeservice
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+spec:
+  type: {{ .Values.simplenodeservice.service.type }}
+  ports:
+  - port: {{ .Values.simplenodeservice.service.externalPort }}
+    targetPort: {{ .Values.simplenodeservice.service.internalPort }}
+    protocol: TCP
+    name: {{ .Values.simplenodeservice.service.name }}
+  selector:
+    app: {{ .Chart.Name }}-selector-simplenodeservice
