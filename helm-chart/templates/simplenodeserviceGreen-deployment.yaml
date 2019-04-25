@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: simplenodeservice-green
+  labels:
+    app: {{ .Chart.Name }}-selector-simplenodeservice
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  replicas: {{ .Values.simplenodeserviceGreen.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}-selector-simplenodeservice
+        deployment: simplenodeservice-green
+    spec:
+      containers:
+      - name: {{ .Values.simplenodeserviceGreen.container.name }}
+        image: "{{ .Values.simplenodeserviceGreen.image.repository }}:{{ .Values.simplenodeserviceGreen.image.tag }}"
+        imagePullPolicy: {{ .Values.simplenodeserviceGreen.image.pullPolicy }}
+        env:
+        - name: DT_TAGS
+          value: "application={{ .Chart.Name }}"
+        ports:
+        - name: internalport
+          containerPort: {{ .Values.simplenodeserviceGreen.service.internalPort }}
+        resources:
+{{ toYaml .Values.resources | indent 12 }}
