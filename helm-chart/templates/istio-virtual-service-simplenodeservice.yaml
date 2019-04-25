@@ -1,0 +1,13 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: keptn-sample-staging-keptnsample-simplenodeservice
+spec:
+  hosts:
+  - "simplenodeservice.staging-keptnsample.35.222.211.27.xip.io"
+  gateways:
+  - keptn-sample-staging-keptnsample-gateway
+  http:
+    - route:
+      - destination:
+          host: simplenodeservice.staging-keptnsample.svc.cluster.local
