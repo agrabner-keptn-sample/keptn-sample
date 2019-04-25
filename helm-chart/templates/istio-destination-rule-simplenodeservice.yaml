@@ -1,0 +1,13 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: simplenodeservice-prod-keptnsample-destination
+spec:
+  host: simplenodeservice.prod-keptnsample.svc.cluster.local
+  subsets:
+  - name: blue
+    labels:
+      deployment: simplenodeservice-blue
+  - name: green
+    labels:
+      deployment: simplenodeservice-green
