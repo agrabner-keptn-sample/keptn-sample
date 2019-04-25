@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: simplenodeservice-blue
+  labels:
+    app: {{ .Chart.Name }}-selector-simplenodeservice
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  replicas: {{ .Values.simplenodeserviceBlue.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}-selector-simplenodeservice
+        deployment: simplenodeservice-blue
+    spec:
+      containers:
+      - name: {{ .Values.simplenodeserviceBlue.container.name }}
+        image: "{{ .Values.simplenodeserviceBlue.image.repository }}:{{ .Values.simplenodeserviceBlue.image.tag }}"
+        imagePullPolicy: {{ .Values.simplenodeserviceBlue.image.pullPolicy }}
+        env:
+        - name: DT_TAGS
+          value: "application={{ .Chart.Name }}"
+        ports:
+        - name: internalport
+          containerPort: {{ .Values.simplenodeserviceBlue.service.internalPort }}
+        resources:
+{{ toYaml .Values.resources | indent 12 }}
