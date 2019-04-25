@@ -2,7 +2,7 @@ simplenodeservice:
     container:
         name: simplenodeservice
     image:
-        pullPolicy: IfNotPresent
+        pullPolicy: Always
         repository: null
         tag: null
     replicaCount: 1
