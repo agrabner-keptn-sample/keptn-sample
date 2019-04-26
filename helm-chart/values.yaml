@@ -24,7 +24,7 @@ simplenodeserviceBlue:
     image:
         pullPolicy: IfNotPresent
         repository: index.docker.io/grabnerandi/simplenodeservice
-        tag: 1.0.0
+        tag: 4.0.0
     replicaCount: 1
     resources:
         limits:
