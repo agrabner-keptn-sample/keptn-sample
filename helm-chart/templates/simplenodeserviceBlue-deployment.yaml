@@ -22,6 +22,8 @@ spec:
         env:
         - name: DT_TAGS
           value: "application={{ .Chart.Name }}"
+        - name: NAMESPACE
+          value: "PRODUCTION-BLUE"          
         ports:
         - name: internalport
           containerPort: {{ .Values.simplenodeserviceBlue.service.internalPort }}
