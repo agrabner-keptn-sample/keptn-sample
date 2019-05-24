@@ -4,7 +4,7 @@ simplenodeservice:
     image:
         pullPolicy: Always
         repository: index.docker.io/grabnerandi/simplenodeservice
-        tag: 1.0.0
+        tag: 3.0.0
     replicaCount: 1
     resources:
         limits:
